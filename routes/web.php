@@ -18,3 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 Route::resource('students', StudentController::class);
+Route::get('/search', [StudentController::class, 'search'])->name('search');

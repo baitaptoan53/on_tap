@@ -38,6 +38,10 @@
                                                                            </li>
                                                             </ul>
                                              </div>
+                                             <form method="GET" action="{{ route('search') }}">
+                                                            <input type="text" name="search" placeholder="Nhập từ khóa tìm kiếm">
+                                                            <button type="submit">Tìm kiếm</button>
+                                             </form>
                               </nav>
 
                               @yield('content')

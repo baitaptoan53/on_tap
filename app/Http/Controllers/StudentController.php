@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Program;
 use App\Models\student;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class StudentController extends Controller
 {
@@ -44,9 +45,9 @@ class StudentController extends Controller
         $request->validate([
             'surname' => 'required',
             'givenname' => 'required',
-            'date_of_birth'=>'required|date',
-            'yearenrolled'=>'required|min:1|max:4',
-            'program_id'=>'required',
+            'date_of_birth' => 'required|date',
+            'yearenrolled' => 'required|min:1|max:4',
+            'program_id' => 'required',
         ]);
 
         $student = new student();
@@ -113,4 +114,17 @@ class StudentController extends Controller
         $student->delete();
         return redirect()->route('students.index');
     }
+    public function search(Request $request)
+    {
+        $request->validate([
+            'search' => 'required',
+        ]);
+        $search = $request->search;
+        $students = student::where('surname', 'like', "%$search%")
+            ->orWhere('givenname', 'like', "%$search%")
+            ->paginate(10);
+        $count = $students->count();
+        return view('students.search', compact('students', 'count'));
+    }
+    
 }
