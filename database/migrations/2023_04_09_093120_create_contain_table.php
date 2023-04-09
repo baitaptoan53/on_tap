@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::create('contain', function (Blueprint $table) {
             $table->id();
-            $table->string('surname');
-            $table->string('givenname');
-            $table->date('date_of_birth');
-            $table->year('yearenrolled');
+            $table->year('year');
+            $table->integer('semester');
+            $table->foreignId('course_id')->constrained();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('contain');
     }
 };

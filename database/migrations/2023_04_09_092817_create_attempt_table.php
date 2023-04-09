@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->string('surname');
-            $table->string('givenname');
-            $table->date('date_of_birth');
-            $table->year('yearenrolled');
+        Schema::create('attempt', function (Blueprint $table) {
+            $table->year('year')->primary();
+            $table->integer('semester');
+            $table->foreignId('student_id')->constrained();
+            $table->foreignId('course_id')->constrained();
+            $table->string('grade');
+            $table->boolean('mark');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('attempt');
     }
 };
