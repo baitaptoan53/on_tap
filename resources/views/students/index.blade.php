@@ -45,5 +45,8 @@
                                              </tbody>
                               </table>
                </div>
+               <div class="col-md-12">
+                              {{ $students->links() }} 
+               </div>
 </div>
 @endsection

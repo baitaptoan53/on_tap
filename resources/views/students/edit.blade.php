@@ -126,28 +126,31 @@
 
                                                                                                          <div
                                                                                                                         class="col-md-6">
-                                                                                                                        <select
-                                                                                                                                       class="form-control @error('program_id') is-invalid @enderror"
+                                                                                                                        <select class="form-control @error('program_id') is-invalid @enderror"
                                                                                                                                        name="program_id"
                                                                                                                                        id="program_id">
-                                                                                                                                       @foreach ($programs as
+                                                                                                                                       @foreach
+                                                                                                                                       ($programs
+                                                                                                                                       as
                                                                                                                                        $program)
                                                                                                                                        <option
-                                                                                                                                                      value="{{ $program->id }}"
-                                                                                                                                                      @if ($program->id ==
-                                                                                                                                                      $student->program_id)
-                                                                                                                                                      selected
-                                                                                                                                                      @endif>{{ $program->name }}
+                                                                                                                                                      value="{{ $program->id }}">
+                                                                                                                                                      {{
+                                                                                                                                                      $program->id
+                                                                                                                                                      }}
+                                                                                                                                                      {{
+                                                                                                                                                      $program->name
+                                                                                                                                                      }}
                                                                                                                                        </option>
                                                                                                                                        @endforeach
 
-                                                                                                                        @error('program_id')
-                                                                                                                        <span class="invalid-feedback"
-                                                                                                                                       role="alert">
-                                                                                                                                       <strong>{{ $message
-                                                                                                                                                      }}</strong>
-                                                                                                                        </span>
-                                                                                                                        @enderror
+                                                                                                                                       @error('program_id')
+                                                                                                                                       <span class="invalid-feedback"
+                                                                                                                                                      role="alert">
+                                                                                                                                                      <strong>{{ $message
+                                                                                                                                                                     }}</strong>
+                                                                                                                                       </span>
+                                                                                                                                       @enderror
                                                                                                          </div>
                                                                                           </div>
 

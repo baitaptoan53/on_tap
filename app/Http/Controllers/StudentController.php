@@ -17,6 +17,8 @@ class StudentController extends Controller
     {
         // hien thi danh sach student
         $students = student::all();
+        // phan trang
+        $students = student::paginate(10);
         return view('students.index', compact('students'));
     }
 

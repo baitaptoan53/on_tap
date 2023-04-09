@@ -30,14 +30,11 @@
                                              <div class="form-group">
                                                             <label for="date_of_birth"> program_id
                                                             </label>
-                                                            @foreach ($programs as
-                                                            $program)
-                                                            <option value="{{ $program->id }}" @if ($program->id ==
-                                                                           $student->program_id)
-                                                                           selected
-                                                                           @endif>{{ $program->name }}
-                                                            </option>
+                                                            <select name="program_id" id="program_id">
+                                                            @foreach ($programs as $program)
+                                                            <option value="{{ $program->id }}">{{ $program->id }}  {{ $program->name }}</option>
                                                             @endforeach
+                                                            </select>
                                              </div>
                                              <button type="submit" class="btn btn-primary">Create</button>
                               </form>
